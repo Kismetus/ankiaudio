@@ -1,40 +1,36 @@
-# Ankiaudio
+# AnkiAudio
 
-Prosty skrypt do generowania fiszek z plikami audio dla AnkiDroid w Termuxie.
-
----
-
-## 1. Wymagania
-
-1. [Termux](https://play.google.com/store/apps/details?id=com.termux)  
-2. [Termux:API](https://play.google.com/store/apps/details?id=com.termux.api)
-
-Po zainstalowaniu obu aplikacji zakładamy, że są gotowe do użycia.
+Proste narzędzie do generowania fiszek z plikami audio dla AnkiDroid.
 
 ---
 
-## 2. Instalacja zależności i skryptu
+## Wymagania
 
-Skopiuj i wklej do Termuxa (całość na raz):
+1. [Termux w Google Play](https://play.google.com/store/apps/details?id=com.termux)
+2. [Termux:API w Google Play](https://play.google.com/store/apps/details?id=com.termux.api)
+
+Zakładamy, że masz obie aplikacje zainstalowane.
+
+---
+
+## Instalacja w Termuxie
+
+Skopiuj i wklej w Termuksie:
 
 ```sh
-# aktualizacja pakietów
-pkg update && pkg upgrade -y
+# Aktualizacja i podstawowe narzędzia
+pkg update
+pkg install python pipx git termux-api -y
 
-# instalacja Python i pipx
-pkg install python pipx -y
-
-# instalacja gTTS
+# Instalacja gTTS
 pipx install gtts
 
-# utworzenie katalogu na skrypty
+# Utworzenie katalogu ~/bin jeśli nie istnieje
 mkdir -p ~/bin
 
-# pobranie skryptu ankiaudio
-curl -o ~/bin/anki-audio https://raw.githubusercontent.com/Kismetus/ankiaudio/main/ankiaudio.py
+# Ściągnięcie skryptu ankiaudio
+cd ~/bin
+curl -LO https://raw.githubusercontent.com/Kismetus/ankiaudio/main/ankiaudio.py
 
-# nadanie praw do uruchamiania
-chmod +x ~/bin/anki-audio
-
-# gotowe, od teraz można uruchamiać skrypt z dowolnego miejsca:
-# anki-audio
+# Nadanie praw do uruchamiania
+chmod +x ankiaudio.py
